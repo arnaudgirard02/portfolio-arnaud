@@ -247,7 +247,7 @@ const Portfolio = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
               </span>
-              Available for Senior / Lead Roles
+              Available for Senior / Lead roles
             </div>
             
             <h1 className="text-5xl md:text-8xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
@@ -258,7 +258,7 @@ const Portfolio = () => {
             </h1>
             
             <p className="text-xl text-slate-400 mb-12 max-w-2xl leading-relaxed border-l-2 border-slate-800 pl-6">
-              Senior Product Manager specialized in B2B SaaS & Marketplaces. 
+              Senior Product Manager specialized in SaaS & Marketplaces (B2C & B2B). 
               I transform user insights into measurable business growth levers.
             </p>
             
@@ -268,14 +268,14 @@ const Portfolio = () => {
                 onClick={() => scrollTo('case-studies')}
                 className="w-full sm:w-auto justify-center group bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-[0_4px_20px_rgba(79,70,229,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
-                View Case Studies 
+                View case studies 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
               </button>
               <button 
                 onClick={() => window.open('https://www.linkedin.com/in/arnaud-girard-64393110a/?locale=en_US', '_blank')}
                 className="w-full sm:w-auto justify-center px-8 py-4 rounded-xl font-semibold text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all border border-slate-800 flex items-center gap-2 hover:scale-105 active:scale-95"
               >
-                <Linkedin size={18} /> LinkedIn Profile
+                <Linkedin size={18} /> LinkedIn profile
               </button>
             </div>
           </div>
@@ -314,7 +314,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-16">
             <div className="md:w-1/3">
-              <h2 className="text-4xl font-bold text-white mb-6">Product Philosophy</h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Product philosophy</h2>
               <p className="text-slate-400 leading-relaxed">
                 My methodology is pragmatic. I don't seek theoretical perfection, but measurable impact. I constantly navigate between macro vision (strategy) and micro details (execution).
               </p>
@@ -328,7 +328,7 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Outcome over Output</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Outcome over output</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
                     Shipping features isn't enough. I measure success by business indicators (Revenue, Retention, Activation). If a feature doesn't move the needle, it must be iterated or killed.
                   </p>
@@ -342,7 +342,7 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Data-Informed, Intuition-Guided</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Data-informed, Intuition-guided</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
                     Data tells us "what", user research tells us "why". I use SQL and quantitative analysis to detect opportunities, and qualitative insights to design the solution.
                   </p>
@@ -356,7 +356,7 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Radical Collaboration</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Radical collaboration</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
                     The PM is not the "CEO of the product". I facilitate collective intelligence. The best ideas often come from engineers or customer support, not always the PM.
                   </p>
@@ -371,7 +371,7 @@ const Portfolio = () => {
       <section id="case-studies" className="py-16 lg:py-32 bg-slate-900/30 border-y border-slate-800/50 relative z-10">
         <div className="container mx-auto px-6">
           <div className="mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Deep Dives</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Deep dives</h2>
             <p className="text-slate-400">Detailed exploration of complex problems solved.</p>
           </div>
 
@@ -436,7 +436,7 @@ const Portfolio = () => {
                     <div className="space-y-4">
                        <div className="flex items-center gap-2 text-slate-200 font-bold text-sm uppercase tracking-wide">
                           <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
-                          The Problem
+                          The problem
                        </div>
                        {/* Rendu conditionnel : Liste de paragraphes ou texte simple */}
                        <div className="border-l border-slate-800 pl-4">
@@ -456,7 +456,7 @@ const Portfolio = () => {
                     <div className="space-y-4">
                        <div className="flex items-center gap-2 text-slate-200 font-bold text-sm uppercase tracking-wide">
                           <div className="w-2 h-2 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>
-                          The Discovery
+                          The discovery
                        </div>
                        {/* Rendu conditionnel : Liste de paragraphes ou texte simple */}
                        <div className="border-l border-slate-800 pl-4">
@@ -478,14 +478,14 @@ const Portfolio = () => {
                   <div className="bg-[#161b2c] rounded-xl p-6 border border-slate-800 mb-8 relative overflow-hidden">
                     <div className={`absolute top-0 left-0 w-1 h-full ${currentStyle.bar}`}></div>
                     <div className={`flex items-center gap-2 ${currentStyle.text} font-bold text-sm uppercase tracking-wide mb-3`}>
-                        <Lightbulb size={16} /> The Solution
+                        <Lightbulb size={16} /> The solution
                     </div>
                     <p className="text-slate-300">{caseStudies[activeCaseStudy].solution}</p>
                   </div>
 
                   <div>
                     <div className="flex items-center gap-2 text-green-400 font-bold text-sm uppercase tracking-wide mb-6">
-                        <TrendingUp size={16} /> Business Impact
+                        <TrendingUp size={16} /> Business impact
                     </div>
                     {/* GRID IMPACT FIXÉ POUR MOBILE */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -572,7 +572,7 @@ const Portfolio = () => {
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (Design System)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
                    Helped a Senior Product Manager on the discovery and delivery aspects.
-                   With a focus on technical efficiency and scaling the Design System (Adoption Rate grew from 15% to 70%).
+                   With a focus on technical efficiency and scaling the Design System (Adoption rate grew from 15% to 70%).
                  </p>
               </div>
             </div>
