@@ -522,7 +522,7 @@ const Portfolio = () => {
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2B)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams. Defining Go-to-Market strategy and orchestrating the recruitment of the first beta testers.
+                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams.
                  </p>
               </div>
             </div>
@@ -536,17 +536,17 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Product Manager</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2022 - 2025</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2021 - 2025</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2C & Engagement)</div>
                  <ul className="space-y-2 text-sm text-slate-500">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
-                      <span><strong className="text-slate-300">Search Revamp:</strong> +30% applications via Algolia migration.</span>
+                      <span><strong className="text-slate-300">Search Revamp:</strong> +30% applications through search improvements.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
-                      <span><strong className="text-slate-300">Community:</strong> 10k MAU achieved on the social module.</span>
+                      <span><strong className="text-slate-300">Insight:</strong> +20% active engineer students.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
@@ -565,11 +565,12 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Associate PM</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2022</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2021</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (Design System)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Focused on technical efficiency and scaling the Design System (Adoption Rate grew from 15% to 70%).
+                   Helped a Senior Product Manager on the discovery and delivery aspects.
+                   With a focus on technical efficiency and scaling the Design System (Adoption Rate grew from 15% to 70%).
                  </p>
               </div>
             </div>
