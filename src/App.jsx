@@ -177,12 +177,7 @@ const Portfolio = () => {
       
       {/* --- BACKGROUND INTERACTIF (Version Aurora) --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        
-        {/* 1. Fond Noir Profond */}
         <div className="absolute inset-0 bg-[#0B0F19]"></div>
-
-        {/* 2. Grille Technique (Révélation Locale) */}
-        {/* Cette grille n'est visible que là où passe la lumière grâce au mask-image */}
         <div 
           className="absolute inset-0 opacity-40"
           style={{
@@ -191,20 +186,15 @@ const Portfolio = () => {
               linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px',
-            // Le masque révèle la grille autour de la souris
             maskImage: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`
           }}
         ></div>
-        
-        {/* 3. La "Lueur" Principale (Suit la souris instantanément) */}
         <div 
           className="absolute inset-0"
           style={{
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(99, 102, 241, 0.07), transparent 40%)`
           }}
         ></div>
-
-        {/* 4. L'Effet "Aurora" Secondaire (Suit avec inertie - Traînée colorée) */}
         <div 
           className="absolute inset-0 transition-opacity duration-75"
           style={{
@@ -214,8 +204,6 @@ const Portfolio = () => {
             `
           }}
         ></div>
-
-        {/* 5. Vignetage pour assombrir les bords de l'écran */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B0F19] opacity-80"></div>
       </div>
 
@@ -272,17 +260,18 @@ const Portfolio = () => {
               I transform user insights into measurable business growth levers.
             </p>
             
+            {/* BOUTONS FIXÉS POUR MOBILE */}
             <div className="flex flex-wrap gap-4">
               <button 
                 onClick={() => scrollTo('case-studies')}
-                className="group bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-[0_4px_20px_rgba(79,70,229,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto justify-center group bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-[0_4px_20px_rgba(79,70,229,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 View Case Studies 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
               </button>
               <button 
                 onClick={() => window.open('https://www.linkedin.com/in/arnaud-girard-64393110a/?locale=en_US', '_blank')}
-                className="px-8 py-4 rounded-xl font-semibold text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all border border-slate-800 flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto justify-center px-8 py-4 rounded-xl font-semibold text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all border border-slate-800 flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <Linkedin size={18} /> LinkedIn Profile
               </button>
@@ -318,8 +307,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Philosophy Section - Clean & Minimal */}
-      <section id="philosophy" className="py-32 relative z-10">
+      {/* Philosophy Section - ESPACEMENT MOBILE RÉDUIT */}
+      <section id="philosophy" className="py-16 lg:py-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-16">
             <div className="md:w-1/3">
@@ -329,6 +318,7 @@ const Portfolio = () => {
               </p>
             </div>
             <div className="md:w-2/3 grid gap-8">
+              {/* ... Philosophy Items ... */}
               <div className="flex gap-6 group p-4 rounded-2xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
                 <div className="mt-1">
                   <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20 group-hover:border-indigo-500/50 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.2)]">
@@ -375,8 +365,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Case Studies - Interactive Dashboard Style */}
-      <section id="case-studies" className="py-32 bg-slate-900/30 border-y border-slate-800/50 relative z-10">
+      {/* Case Studies - ESPACEMENT MOBILE RÉDUIT */}
+      <section id="case-studies" className="py-16 lg:py-32 bg-slate-900/30 border-y border-slate-800/50 relative z-10">
         <div className="container mx-auto px-6">
           <div className="mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Deep Dives</h2>
@@ -430,7 +420,8 @@ const Portfolio = () => {
                   </div>
 
                   <div className="flex items-start gap-6 mb-10">
-                    <div className={`p-4 rounded-2xl ${currentStyle.bg} ${currentStyle.shadow}`}>
+                    {/* ICONE MASQUÉE SUR MOBILE */}
+                    <div className={`hidden sm:block p-4 rounded-2xl ${currentStyle.bg} ${currentStyle.shadow}`}>
                       {caseStudies[activeCaseStudy].icon}
                     </div>
                     <div>
@@ -494,7 +485,8 @@ const Portfolio = () => {
                     <div className="flex items-center gap-2 text-green-400 font-bold text-sm uppercase tracking-wide mb-6">
                         <TrendingUp size={16} /> Business Impact
                     </div>
-                    <div className="grid grid-cols-3 gap-4">
+                    {/* GRID IMPACT FIXÉ POUR MOBILE */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       {caseStudies[activeCaseStudy].impact.map((item, i) => (
                         <div key={i} className="text-center p-4 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-slate-600 transition-colors">
                           <div className="text-2xl font-bold text-white mb-1">{item.metric}</div>
@@ -511,8 +503,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Timeline Experience - Refined */}
-      <section id="experience" className="py-32 relative z-10">
+      {/* Timeline Experience - ESPACEMENT MOBILE RÉDUIT */}
+      <section id="experience" className="py-16 lg:py-32 relative z-10">
         <div className="container mx-auto px-6 max-w-4xl">
           <h2 className="text-4xl font-bold text-white mb-16 text-center">Experience</h2>
           
@@ -530,7 +522,7 @@ const Portfolio = () => {
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2B)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams.
+                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams. Defining Go-to-Market strategy and orchestrating the recruitment of the first beta testers.
                  </p>
               </div>
             </div>
@@ -544,7 +536,7 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Product Manager</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2021 - 2025</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2022 - 2025</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2C & Engagement)</div>
                  <ul className="space-y-2 text-sm text-slate-500">
@@ -554,7 +546,7 @@ const Portfolio = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
-                      <span><strong className="text-slate-300">Insight:</strong> +20% on the engineer student engagement.</span>
+                      <span><strong className="text-slate-300">Community:</strong> 10k MAU achieved on the social module.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
@@ -573,12 +565,11 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Associate PM</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2021</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2022</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (Design System)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Helped a Senior Product Manager on the discovery and delivery aspects of the job.
-                   Specific focus on technical efficiency and scaling the Design System (Adoption rate grew from 15% to 70%).
+                   Focused on technical efficiency and scaling the Design System (Adoption Rate grew from 15% to 70%).
                  </p>
               </div>
             </div>
