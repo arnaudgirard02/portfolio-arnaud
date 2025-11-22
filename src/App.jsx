@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+// 1. IMPORT DE L'ANALYTICS ICI
+import { Analytics } from "@vercel/analytics/react"
 import { 
   ArrowRight, 
   BarChart3, 
@@ -595,6 +597,9 @@ const Portfolio = () => {
         </div>
         <p className="text-slate-600 text-xs">© 2025 Arnaud Girard.</p>
       </footer>
+
+      {/* 2. COMPOSANT ANALYTICS ICI (JUSTE AVANT LA FIN) */}
+      <Analytics />
     </div>
   );
 };
