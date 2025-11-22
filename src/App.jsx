@@ -19,14 +19,15 @@ import {
   BookOpen,
   CheckCircle2,
   ArrowUpRight,
-  DollarSign
+  DollarSign,
+  Rocket
 } from 'lucide-react';
 
 const Portfolio = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
   
-  // --- NOUVEAU : Logique pour l'effet de lumière ---
+  // --- Logique pour l'effet de lumière (Version "Aurora" restaurée) ---
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [glowPosition, setGlowPosition] = useState({ x: 0, y: 0 });
   const requestRef = useRef();
@@ -75,15 +76,69 @@ const Portfolio = () => {
     }
   };
 
+  // Configuration des couleurs pour chaque projet
+  const accentStyles = {
+    indigo: {
+      bg: 'bg-indigo-600',
+      gradient: 'from-indigo-500 to-blue-500',
+      shadow: 'shadow-[0_0_30px_rgba(99,102,241,0.3)]',
+      border: 'border-indigo-500',
+      text: 'text-indigo-300',
+      bar: 'bg-indigo-500'
+    },
+    teal: {
+      bg: 'bg-teal-600',
+      gradient: 'from-teal-500 to-emerald-500',
+      shadow: 'shadow-[0_0_30px_rgba(45,212,191,0.3)]',
+      border: 'border-teal-500',
+      text: 'text-teal-300',
+      bar: 'bg-teal-500'
+    },
+    rose: {
+      bg: 'bg-rose-600',
+      gradient: 'from-rose-500 to-orange-500',
+      shadow: 'shadow-[0_0_30px_rgba(244,63,94,0.3)]',
+      border: 'border-rose-500',
+      text: 'text-rose-300',
+      bar: 'bg-rose-500'
+    }
+  };
+
   const caseStudies = [
     {
-      title: "Application Funnel Optimization",
-      role: "Lead PM",
-      tags: ["Growth", "UX Research", "Algolia"],
-      context: "Context: B2B clients were unsatisfied with the volume of applications received per offer.",
-      problem: "20% of searches led to <10 results, causing an 80% drop-off. Users over-relied on filters vs. keywords.",
-      discovery: "Users believed filters were more precise, but they actually overly restricted results. 'Missing info' hypothesis invalidated.",
-      solution: "UX Revamp 'Progressive Search' to encourage broad queries + Technical migration to Algolia.",
+      title: "Launch of a new product",
+      role: "0 to 1", 
+      tags: ["Product Strategy", "AI", "B2B", "GTM"],
+      context: "Objective (KR): Create a new product generating €250k revenue in year one to reignite growth.",
+      problem: [
+        "Paradigm shift in recruitment: A massive imbalance where some companies are overwhelmed with applications while others receive zero.",
+        "We identified a 'visibility gap' for unknown companies and specific roles that needed proactive sourcing."
+      ],
+      discovery: [
+        "Met with 20+ recruiters (Chanel, BPI, Wavestone) to perfectly frame the problem and find a solution.",
+      ],
+      solution: "AI-Powered Sourcing solution that proactively identifies and matches the best talent from our 2M+ database to specific open roles.",
+      impact: [
+        { metric: "€100k", label: "Signed Pre-launch" },
+        { metric: "€400k", label: "Forecast (vs 250k)" },
+      ],
+      icon: <Rocket className="text-white" size={24} />,
+      accent: "rose"
+    },
+    {
+      title: "Application funnel optimization",
+      role: "Optimization", 
+      tags: ["Data analyse", "UX Research", "Algolia", "Technical migration"],
+      context: "Objective (KR): Increase the total volume of applications by 20% to mitigate B2B churn risk.",
+      problem: [
+        "Clients complain about a lower volume of applications compared to the competition.",
+      ],
+      discovery: [
+        "Quantitative analysis: 80% of searches are done solely via filters (without keywords), creating results that are too restrictive (20% of searches yield <10 results).",
+        "Qualitative Research: Validation that the UX encourages the over-use of filters and that the existing keyword engine is not very relevant. The hypothesis regarding a lack of info on offers was invalidated.",
+        "Conclusion: Users needed a 'broad-to-narrow' search flow, not a restrictive one."
+      ],
+      solution: "Complete UX Revamp ('Progressive Search') encouraging broad initial queries + Technical migration to Algolia for instant relevance.",
       impact: [
         { metric: "+30%", label: "Total Applications" },
         { metric: "+12%", label: "UX Impact Alone" },
@@ -93,31 +148,41 @@ const Portfolio = () => {
       accent: "indigo"
     },
     {
-      title: "Engineering Student Engagement",
-      role: "Product Manager",
-      tags: ["Discovery", "Social Proof", "Engagement"],
-      context: "Context: Historical underperformance on the Engineering School segment due to lack of junior content.",
-      problem: "How to engage 1st-year students without relevant internship offers to show them?",
-      discovery: "Insight: Students consulted physical binders in libraries to see alumni internships. They sought social proof.",
-      solution: "Digitization of the 'binder': Peer-to-Peer Experience Review Module.",
+      title: "Increase engagement with a new product",
+      role: "0 to 1", 
+      tags: ["Discovery", "Engagement", "GTM"],
+      context: "Objective (KR): Increase the number of active engineering students on the platform by 30%.",
+      problem: [
+        "Low presence in the engineering segment, especially among juniors (1st/2nd year) looking for very short 'blue-collar internships'. These offers are not profitable for companies and are therefore absent from the platform."
+      ],
+      discovery: [
+        "Qualitative interviews revealed a surprising behavior: User Behavior: Students consult physical binders in the school library to find internship histories of alumni (opportunities for them).",
+        "Data Opportunity: JobTeaser already possessed this data via user profiles (past experiences filled in) but was not exploiting it."
+      ],
+      solution: "Digitization of the 'binder': Creation of a peer-to-peer Experience review module to drive engagement without relying on job inventory.",
       impact: [
-        { metric: "+20%", label: "Active Users (Y1)" },
+        { metric: "+20%", label: "Engineer students engagement (Y1)" },
         { metric: "80k+", label: "Reviews Published" },
-        { metric: "10k", label: "MAU at Launch" }
+        { metric: "40+", label: "Schools launched" }
       ],
       icon: <Users className="text-white" size={24} />,
       accent: "teal"
     }
   ];
 
+  const currentStyle = accentStyles[caseStudies[activeCaseStudy].accent];
+
   return (
     <div className="min-h-screen bg-[#0B0F19] text-slate-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 relative overflow-x-hidden">
       
-      {/* --- NOUVEAU : BACKGROUND INTERACTIF --- */}
+      {/* --- BACKGROUND INTERACTIF (Version Aurora) --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
+        
+        {/* 1. Fond Noir Profond */}
         <div className="absolute inset-0 bg-[#0B0F19]"></div>
 
-        {/* Grille qui se révèle */}
+        {/* 2. Grille Technique (Révélation Locale) */}
+        {/* Cette grille n'est visible que là où passe la lumière grâce au mask-image */}
         <div 
           className="absolute inset-0 opacity-40"
           style={{
@@ -126,11 +191,12 @@ const Portfolio = () => {
               linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px',
+            // Le masque révèle la grille autour de la souris
             maskImage: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`
           }}
         ></div>
         
-        {/* Lumière principale */}
+        {/* 3. La "Lueur" Principale (Suit la souris instantanément) */}
         <div 
           className="absolute inset-0"
           style={{
@@ -138,7 +204,7 @@ const Portfolio = () => {
           }}
         ></div>
 
-        {/* Lumière secondaire (traînée) */}
+        {/* 4. L'Effet "Aurora" Secondaire (Suit avec inertie - Traînée colorée) */}
         <div 
           className="absolute inset-0 transition-opacity duration-75"
           style={{
@@ -149,9 +215,9 @@ const Portfolio = () => {
           }}
         ></div>
 
+        {/* 5. Vignetage pour assombrir les bords de l'écran */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B0F19] opacity-80"></div>
       </div>
-      {/* --------------------------------------- */}
 
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled ? 'bg-[#0B0F19]/80 backdrop-blur-xl border-slate-800/50 py-4' : 'bg-transparent border-transparent py-6'}`}>
@@ -174,7 +240,7 @@ const Portfolio = () => {
             ))}
           </div>
           <button 
-            onClick={() => window.open('mailto:contact@arnaudgirard.com')}
+            onClick={() => window.open('mailto:arnaud7.girard@hotmail.fr')}
             className="bg-white text-black hover:bg-slate-200 px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
           >
             <Mail size={16} /> Contact
@@ -214,7 +280,10 @@ const Portfolio = () => {
                 View Case Studies 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
               </button>
-              <button className="px-8 py-4 rounded-xl font-semibold text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all border border-slate-800 flex items-center gap-2 hover:scale-105 active:scale-95">
+              <button 
+                onClick={() => window.open('https://www.linkedin.com/in/arnaud-girard-64393110a/?locale=en_US', '_blank')}
+                className="px-8 py-4 rounded-xl font-semibold text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all border border-slate-800 flex items-center gap-2 hover:scale-105 active:scale-95"
+              >
                 <Linkedin size={18} /> LinkedIn Profile
               </button>
             </div>
@@ -222,7 +291,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Bento Grid Stats (Avec ta modification +250K Revenue) */}
+      {/* Bento Grid Stats */}
       <section className="py-12 border-y border-slate-800/50 bg-slate-900/20 z-10 relative">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -232,7 +301,7 @@ const Portfolio = () => {
               { val: "80k+", label: "Content Pieces", sub: "User Generated Content", icon: <Users size={20} className="text-blue-400"/> },
               { val: "32%", label: "Activation Rate", sub: "vs 15% (Onboarding)", icon: <Zap size={20} className="text-yellow-400"/> },
             ].map((stat, idx) => (
-              <div key={idx} className="p-6 bg-[#0F1421] rounded-xl border border-slate-800 hover:border-slate-600 transition-all group relative overflow-hidden hover:-translate-y-1 duration-300">
+              <div key={idx} className="p-6 bg-[#0F1421] rounded-xl border border-slate-800 hover:border-slate-700 transition-colors group relative overflow-hidden hover:-translate-y-1 duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 <div className="flex justify-between items-start mb-4 relative z-10">
                   <div className="p-2 bg-slate-900 rounded-lg text-slate-400 group-hover:text-white transition-colors shadow-inner">
@@ -323,20 +392,20 @@ const Portfolio = () => {
                   onClick={() => setActiveCaseStudy(index)}
                   className={`w-full text-left p-5 rounded-xl border transition-all duration-300 group relative overflow-hidden ${
                     activeCaseStudy === index 
-                      ? 'bg-[#161b2c] border-indigo-500/50 shadow-lg shadow-indigo-900/10' 
+                      ? `bg-[#161b2c] ${currentStyle.border} shadow-lg shadow-indigo-900/10` 
                       : 'bg-[#0F1421] border-slate-800 hover:border-slate-700'
                   }`}
                 >
                   {activeCaseStudy === index && (
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500 h-full shadow-[0_0_15px_#6366f1]"></div>
+                    <div className={`absolute left-0 top-0 bottom-0 w-1 ${currentStyle.bar} h-full`}></div>
                   )}
                   <div className="flex justify-between items-start mb-2 pl-2">
                     <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border ${
-                      activeCaseStudy === index ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20' : 'bg-slate-800 text-slate-400 border-slate-700'
+                      activeCaseStudy === index ? `${currentStyle.border.replace('border', 'bg')}/10 ${currentStyle.text} ${currentStyle.border}/20` : 'bg-slate-800 text-slate-400 border-slate-700'
                     }`}>
                       {study.role}
                     </span>
-                    {activeCaseStudy === index && <ArrowRight size={14} className="text-indigo-400" />}
+                    {activeCaseStudy === index && <ArrowRight size={14} className={currentStyle.text.replace('text-', 'text-').replace('-300', '-400')} />}
                   </div>
                   <h3 className={`font-bold text-lg pl-2 ${activeCaseStudy === index ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
                     {study.title}
@@ -349,7 +418,7 @@ const Portfolio = () => {
             <div className="lg:col-span-8">
               <div className="h-full bg-[#0F1421] border border-slate-800 rounded-2xl overflow-hidden relative shadow-2xl">
                 {/* Top Bar Decoration */}
-                <div className={`h-1 w-full bg-gradient-to-r ${caseStudies[activeCaseStudy].accent === 'indigo' ? 'from-indigo-500 to-blue-500' : 'from-teal-500 to-emerald-500'}`}></div>
+                <div className={`h-1 w-full bg-gradient-to-r ${currentStyle.gradient}`}></div>
                 
                 <div className="p-8 lg:p-10">
                   <div className="flex flex-wrap gap-2 mb-8">
@@ -361,9 +430,7 @@ const Portfolio = () => {
                   </div>
 
                   <div className="flex items-start gap-6 mb-10">
-                    <div className={`p-4 rounded-2xl shadow-[0_0_30px_rgba(99,102,241,0.3)] ${
-                      caseStudies[activeCaseStudy].accent === 'indigo' ? 'bg-indigo-600' : 'bg-teal-600'
-                    }`}>
+                    <div className={`p-4 rounded-2xl ${currentStyle.bg} ${currentStyle.shadow}`}>
                       {caseStudies[activeCaseStudy].icon}
                     </div>
                     <div>
@@ -378,24 +445,46 @@ const Portfolio = () => {
                           <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
                           The Problem
                        </div>
-                       <p className="text-slate-400 text-sm leading-relaxed border-l border-slate-800 pl-4">
-                          {caseStudies[activeCaseStudy].problem}
-                       </p>
+                       {/* Rendu conditionnel : Liste de paragraphes ou texte simple */}
+                       <div className="border-l border-slate-800 pl-4">
+                         {Array.isArray(caseStudies[activeCaseStudy].problem) ? (
+                           caseStudies[activeCaseStudy].problem.map((p, i) => (
+                             <p key={i} className="text-slate-400 text-sm leading-relaxed mb-3 last:mb-0">
+                               {p}
+                             </p>
+                           ))
+                         ) : (
+                           <p className="text-slate-400 text-sm leading-relaxed">
+                             {caseStudies[activeCaseStudy].problem}
+                           </p>
+                         )}
+                       </div>
                     </div>
                     <div className="space-y-4">
                        <div className="flex items-center gap-2 text-slate-200 font-bold text-sm uppercase tracking-wide">
                           <div className="w-2 h-2 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>
                           The Discovery
                        </div>
-                       <p className="text-slate-400 text-sm leading-relaxed border-l border-slate-800 pl-4">
-                          {caseStudies[activeCaseStudy].discovery}
-                       </p>
+                       {/* Rendu conditionnel : Liste de paragraphes ou texte simple */}
+                       <div className="border-l border-slate-800 pl-4">
+                         {Array.isArray(caseStudies[activeCaseStudy].discovery) ? (
+                           caseStudies[activeCaseStudy].discovery.map((p, i) => (
+                             <p key={i} className="text-slate-400 text-sm leading-relaxed mb-3 last:mb-0">
+                               {p}
+                             </p>
+                           ))
+                         ) : (
+                           <p className="text-slate-400 text-sm leading-relaxed">
+                             {caseStudies[activeCaseStudy].discovery}
+                           </p>
+                         )}
+                       </div>
                     </div>
                   </div>
 
                   <div className="bg-[#161b2c] rounded-xl p-6 border border-slate-800 mb-8 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
-                    <div className="flex items-center gap-2 text-indigo-300 font-bold text-sm uppercase tracking-wide mb-3">
+                    <div className={`absolute top-0 left-0 w-1 h-full ${currentStyle.bar}`}></div>
+                    <div className={`flex items-center gap-2 ${currentStyle.text} font-bold text-sm uppercase tracking-wide mb-3`}>
                         <Lightbulb size={16} /> The Solution
                     </div>
                     <p className="text-slate-300">{caseStudies[activeCaseStudy].solution}</p>
@@ -441,7 +530,7 @@ const Portfolio = () => {
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2B)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams. Defining Go-to-Market strategy and orchestrating the recruitment of the first beta testers.
+                   Spearheading the creation of a "Zero-to-One" product to diversify revenue streams.
                  </p>
               </div>
             </div>
@@ -455,7 +544,7 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Product Manager</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2022 - 2025</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2021 - 2025</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (B2C & Engagement)</div>
                  <ul className="space-y-2 text-sm text-slate-500">
@@ -465,7 +554,7 @@ const Portfolio = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
-                      <span><strong className="text-slate-300">Community:</strong> 10k MAU achieved on the social module.</span>
+                      <span><strong className="text-slate-300">Insight:</strong> +20% on the engineer student engagement.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="mt-0.5 text-green-500 shrink-0"/>
@@ -484,11 +573,12 @@ const Portfolio = () => {
               <div className="pb-12 pt-1">
                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-slate-200 group-hover:text-white transition-colors">Associate PM</h3>
-                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2022</span>
+                    <span className="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded">2019 - 2021</span>
                  </div>
                  <div className="text-slate-400 mb-4 font-medium">JobTeaser (Design System)</div>
                  <p className="text-sm text-slate-500 leading-relaxed max-w-xl">
-                   Focused on technical efficiency and scaling the Design System (Adoption Rate grew from 15% to 70%).
+                   Helped a Senior Product Manager on the discovery and delivery aspects of the job.
+                   Specific focus on technical efficiency and scaling the Design System (Adoption rate grew from 15% to 70%).
                  </p>
               </div>
             </div>
@@ -498,10 +588,18 @@ const Portfolio = () => {
 
       {/* Footer */}
       <footer className="py-12 border-t border-slate-800 bg-[#0B0F19] text-center relative z-10">
-        <h2 className="text-2xl font-bold text-white mb-6">Let's build something impactful together.</h2>
+        <h2 className="text-2xl font-bold text-white mb-2">Ready to drive product impact?</h2>
+        <p className="text-slate-400 mb-8">I am currently open to Senior & Lead PM opportunities.</p>
         <div className="flex justify-center gap-6 mb-8">
-          <a href="#" className="p-3 rounded-full bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-slate-800 hover:border-indigo-500/50"><Linkedin size={20} /></a>
-          <a href="mailto:contact@arnaudgirard.com" className="p-3 rounded-full bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-slate-800 hover:border-indigo-500/50"><Mail size={20} /></a>
+          <a 
+            href="https://www.linkedin.com/in/arnaud-girard-64393110a/?locale=en_US" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 rounded-full bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-slate-800"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a href="mailto:arnaud7.girard@hotmail.fr" className="p-3 rounded-full bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-slate-800"><Mail size={20} /></a>
         </div>
         <p className="text-slate-600 text-xs">© 2025 Arnaud Girard.</p>
       </footer>
