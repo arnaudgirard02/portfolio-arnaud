@@ -121,7 +121,7 @@ const Portfolio = () => {
       ],
       solution: "AI-Powered Sourcing solution that proactively identifies and matches the best talent from our 2M+ database to specific open roles.",
       impact: [
-        { metric: "€100k", label: "Signed Pre-launch" },
+        { metric: "€150k", label: "Signed Pre-launch" },
         { metric: "€400k", label: "Forecast (vs 250k)" },
       ],
       icon: <Rocket className="text-white" size={24} />,
